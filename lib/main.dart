@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'package:platzi_tripss_app/home_trip.dart';
+import 'package:platzi_tripss_app/platzi_trips.dart';
 
 void main(){
   SystemChrome.setSystemUIOverlayStyle(
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue[255],
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: HomeTrips(),
+      home: PlatziTrips(),
     );
   }
 }
