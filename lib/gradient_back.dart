@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 
 class GradientBack extends StatelessWidget {
   String title = "Popular";
-  GradientBack({this.title});
+  double size = 250.0;
+
+  GradientBack({this.title, this.size});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 250.0,
+      height: size,
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: [

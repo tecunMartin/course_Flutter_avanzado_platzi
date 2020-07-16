@@ -11,7 +11,6 @@ class PlatziTrips extends StatefulWidget {
 }
 
 class _PlatziTripsState extends State<PlatziTrips> {
-  
   int indextap =0;
 
   final List<Widget> widgetsChildren = [
@@ -33,14 +32,14 @@ class _PlatziTripsState extends State<PlatziTrips> {
       bottomNavigationBar: Theme(
         data: Theme.of(context).copyWith(
           canvasColor: Colors.white,
-          primaryColor: Colors.purple,
+          primaryColor: Color(0xFF4268D3),
         ), 
         child: BottomNavigationBar(
           onTap: onTapTapped,
           currentIndex: indextap,
           items: [
             BottomNavigationBarItem(
-              icon: Icon(Icons.home),
+              icon: Icon(Icons.home,),
               title: Text("")
             ),
             BottomNavigationBarItem(

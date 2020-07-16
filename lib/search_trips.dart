@@ -7,7 +7,6 @@ class SearchTrips extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Text("data"),
       color: Colors.greenAccent,
     );
   }
