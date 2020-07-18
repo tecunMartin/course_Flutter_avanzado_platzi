@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:platzi_tripss_app/Icons_superior_perfil.dart';
 import 'package:platzi_tripss_app/gradient_back.dart';
-import 'package:platzi_tripss_app/imagenes_fondo.dart';
+import 'package:platzi_tripss_app/Icons_superior_perfil.dart';
+import 'package:platzi_tripss_app/review_list_profile.dart';
 
 class ProfileTrips extends StatelessWidget {
   const ProfileTrips({Key key}) : super(key: key);
@@ -9,13 +9,13 @@ class ProfileTrips extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
+      body: Stack(
         children: <Widget>[
-          Stack(
+          GradientBack(title: "Profile", size: 350.0, heightS: -5,),
+          ListView(
             children: <Widget>[
-              GradientBack(title: "Profile", size: 350.0, heightS: -5,),
               SuperiorIcons(),
-              ImageFondo(),
+              ReviewListProfile(),
             ],
           ),
         ],

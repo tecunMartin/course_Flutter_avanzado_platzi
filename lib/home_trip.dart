@@ -12,7 +12,7 @@ class HomeTrips extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: <Widget>[
-          ListView(
+          ListView( 
             children: <Widget>[
               DescriptionPlace(namePlace: "Guatemala", stars: 4, descriptionPlace: _descriptionDummy,),
               ReviewList(),

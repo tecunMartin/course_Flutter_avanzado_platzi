@@ -3,7 +3,6 @@ import 'package:platzi_tripss_app/datos_user.dart';
 
 
 class SuperiorIcons extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
 
@@ -42,7 +41,7 @@ class SuperiorIcons extends StatelessWidget {
 
     return Column(
       children: <Widget>[
-        DatosUser(userName:"Pathum Tzoo",email:"pathumtzoo1@gmail.com",pathImage: "assets/img/people.jpg"),
+        DatosUser(userName:"Martín Tecún",email:"charlesmartin781@gmail.com",pathImage: "assets/img/me.jpg"),
         ordenIcons,
       ],
     );
