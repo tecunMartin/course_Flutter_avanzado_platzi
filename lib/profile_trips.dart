@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:platzi_tripss_app/datos_user.dart';
+import 'package:platzi_tripss_app/Icons_superior_perfil.dart';
 import 'package:platzi_tripss_app/gradient_back.dart';
+import 'package:platzi_tripss_app/imagenes_fondo.dart';
 
 class ProfileTrips extends StatelessWidget {
   const ProfileTrips({Key key}) : super(key: key);
@@ -8,13 +9,15 @@ class ProfileTrips extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
-      body: Stack(
-        
+      body: Column(
         children: <Widget>[
-          FloatingActionButton(onPressed: null),
-          GradientBack(title: "Perfil", size: 300.0, ),
-          DatosUser(userName:"Pathum Tzoo",email:"pathumtzoo1@gmail.com",pathImage: "assets/img/people.jpg"),
+          Stack(
+            children: <Widget>[
+              GradientBack(title: "Profile", size: 350.0, heightS: -5,),
+              SuperiorIcons(),
+              ImageFondo(),
+            ],
+          ),
         ],
       ),
     );

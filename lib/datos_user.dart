@@ -9,15 +9,14 @@ class DatosUser extends StatelessWidget {
   DatosUser({this.email,this.userName,this.pathImage});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context){
     return Container(
       height: 90,
       margin: EdgeInsets.only(
         top: 90,
-        left: 35,
+        left: 15,
       ),
       child: Row(
-        mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           _imagenPerfil(),
           _datosPerfil(),

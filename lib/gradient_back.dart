@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 class GradientBack extends StatelessWidget {
   String title = "Popular";
   double size = 250.0;
+  double heightS = -5;
 
-  GradientBack({this.title, this.size});
+  GradientBack({this.title, this.size, this.heightS});
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +25,7 @@ class GradientBack extends StatelessWidget {
       ),
       child:  Text(title,
         style: TextStyle(
+          height: heightS,
           color: Colors.white,
           fontSize: 30.0,
           fontFamily: "Plato",
