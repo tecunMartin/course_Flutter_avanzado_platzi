@@ -1,49 +1,47 @@
 import 'package:flutter/material.dart';
 
+class ButtonGreen extends StatefulWidget {
+  final String text;
+  double width = 0.0;
+  double height = 0.0;
+  final VoidCallback onPressed;
 
-class ButtonPurple extends StatelessWidget {
-
-  String buttonText = "Navigate";
-
-  ButtonPurple(this.buttonText);
+  ButtonGreen({ Key key, @required this.text, @required this.onPressed, this.height, this.width });  
 
   @override
+  _ButtonGreenState createState() => _ButtonGreenState();
+}
+
+class _ButtonGreenState extends State<ButtonGreen> {
+  
+  @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return InkWell(
-      onTap: () {
-        Scaffold.of(context).showSnackBar(
-            SnackBar(
-              content: Text("Navegando"),
-            )
-        );
-      },
+      onTap: widget.onPressed,
       child: Container(
         margin: EdgeInsets.only(
             top: 30.0,
             left: 20.0,
             right: 20.0
         ),
-        height: 50.0,
-        width: 180.0,
+        height: widget.height,
+        width: widget.width,
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(30.0),
+            borderRadius: BorderRadius.circular(15.0),
             gradient: LinearGradient(
               colors: [
-                Color(0xFF4268D3),
-                Color(0xFF584CD1)
+                Color(0xFFa7ff84),
+                Color(0xFF1cbb78)
               ],
               begin: FractionalOffset(0.2, 0.0),
               end: FractionalOffset(1.0, 0.6),
               stops: [0.0, 0.6],
               tileMode: TileMode.clamp
-
             )
         ),
-
         child: Center(
           child: Text(
-            buttonText,
+            widget.text,
             style: TextStyle(
               fontSize: 18.0,
               fontFamily: "Lato",
@@ -54,5 +52,8 @@ class ButtonPurple extends StatelessWidget {
       ),
     );
   }
-
 }
+
+
+
+
