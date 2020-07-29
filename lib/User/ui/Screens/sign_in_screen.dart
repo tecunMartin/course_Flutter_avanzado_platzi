@@ -25,10 +25,10 @@ Widget _handleCurrentSession(){
     stream: userBloc.authStatus,
     builder: (BuildContext context, AsyncSnapshot snapshot){
       //Snapshot contiene los datos - Object User
-      if(snapshot.hasData || snapshot.hasError){
-        return PlatziTripsCupertino();
+      if(!snapshot.hasData || snapshot.hasError){
+        return signInGoogleUI(); 
       }else{
-        return signInGoogleUI();
+        return PlatziTripsCupertino();
       }
     },
   );

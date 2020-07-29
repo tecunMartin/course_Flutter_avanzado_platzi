@@ -9,6 +9,7 @@ class UserBloc implements Bloc{
 
   //Flujo de datos = Streams.
   //Stream de Firebase.
+  //Stream controller
 
   Stream<FirebaseUser> streamFirabase = FirebaseAuth.instance.onAuthStateChanged;
   Stream<FirebaseUser> get authStatus => streamFirabase;
@@ -20,6 +21,10 @@ class UserBloc implements Bloc{
 
   Future<FirebaseUser> signIn(){
     return _auth_repository.signInFirebase();
+  }
+
+  signOut(){
+    _auth_repository.singOut();
   }
   
   
