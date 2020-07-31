@@ -17,6 +17,7 @@ class UserBloc implements Bloc{
   /* 
     Casos de uso:
     1) SignIn a la aplicacion Google.
+    2) SignOut a la aplicacion de google.
    */
 
   Future<FirebaseUser> signIn(){

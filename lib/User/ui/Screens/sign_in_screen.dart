@@ -56,6 +56,7 @@ Widget signInGoogleUI(){
             ButtonGreen(
             text: "Login with Gmail", 
             onPressed: (){
+              userBloc.signOut();
               userBloc.signIn().then((FirebaseUser user) => print("El usuario es ${user.displayName}"));
             },
             height: 50.0,

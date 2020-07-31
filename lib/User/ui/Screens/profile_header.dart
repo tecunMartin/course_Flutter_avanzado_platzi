@@ -1,26 +1,84 @@
 import 'package:flutter/material.dart';
+import 'package:generic_bloc_provider/generic_bloc_provider.dart';
+import 'package:platzi_tripss_app/User/bloc/bloc_user.dart';
+import 'package:platzi_tripss_app/User/model/user.dart';
+
 import 'package:platzi_tripss_app/User/ui/widgets/button_bar.dart';
 import 'package:platzi_tripss_app/User/ui/widgets/user_info.dart';
 
 class ProfileHeader extends StatelessWidget {
+  UserBloc userBloc;
+  User user;
+
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context){
 
-    final title = Text(
-      'Profile',
-      style: TextStyle(
-          fontFamily: 'Lato',
-          color: Colors.white,
-          fontWeight: FontWeight.bold,
-          fontSize: 30.0
-      ),
+    userBloc = BlocProvider.of<UserBloc>(context);
+
+    return StreamBuilder(
+      builder:(BuildContext context, AsyncSnapshot snapshot){
+        switch (snapshot.connectionState){
+          case ConnectionState.active:
+            return showProfileData(snapshot);
+          break;
+
+          case ConnectionState.done:
+            return showProfileData(snapshot);
+          break;  
+
+          case ConnectionState.waiting:
+            return CircularProgressIndicator();
+          break;
+
+          case ConnectionState.none:
+            return CircularProgressIndicator();
+          break;
+
+        }
+      },
+      stream: userBloc.streamFirabase,
     );
+  }
+final title = Text(
+  'Profile',
+  style: TextStyle(
+    fontFamily: 'Lato',
+    color: Colors.white,
+    fontWeight: FontWeight.bold,
+    fontSize: 30.0
+  ),
+);
 
+Widget showProfileData(AsyncSnapshot snapshot){
+  if(!snapshot.hasData || snapshot.hasError){
+  print("No logeado");
     return Container(
       margin: EdgeInsets.only(
-          left: 20.0,
-          right: 20.0,
-          top: 50.0
+        left: 20.0,
+        right: 20.0,
+        top: 50.0
+      ),
+      child: Column(
+        children: <Widget>[
+          Row(
+            children: <Widget>[
+              CircularProgressIndicator(),
+              Text("No se pudo cargar la información. Haz login"),
+            ],
+          ),
+        ],
+      ),
+    );
+  }else{
+    print("Logueado");
+    print(snapshot.data);
+    user = User(name: snapshot.data.displayName, email: snapshot.data.email, photoURL: snapshot.data.photoUrl);
+    
+    return Container(
+      margin: EdgeInsets.only(
+        left: 20.0,
+        right: 20.0,
+        top: 50.0
       ),
       child: Column(
         children: <Widget>[
@@ -29,11 +87,13 @@ class ProfileHeader extends StatelessWidget {
               title
             ],
           ),
-          UserInfo('assets/img/me.jpg', 'Martin Tecun','tecuncharles132@hotmail.com'),
+          UserInfo(user),
           ButtonsBar()
         ],
       ),
     );
   }
+}
+
 
 }
