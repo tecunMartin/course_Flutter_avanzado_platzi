@@ -15,8 +15,11 @@ class SignInScreen extends StatefulWidget {
 class _SignInScreenState extends State<SignInScreen> {
 
   UserBloc userBloc; 
+  double sceneWidget;
   @override
   Widget build(BuildContext context){
+    double sceneWidget = MediaQuery.of(context).size.width;
+
     userBloc = BlocProvider.of(context);
     return _handleCurrentSession();
   }
@@ -35,24 +38,28 @@ Widget _handleCurrentSession(){
   );
 }
 
-
 Widget signInGoogleUI(){
   return Scaffold(
     body: Stack(
       alignment: Alignment.center,
       children: <Widget>[
-        GradientBack(title:"",height: null,),
+        GradientBack(height: null,),
         Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text("Welcome\nThis is your Travel App",
-              style: TextStyle(
-                fontFamily: "Lato",
-                fontSize: 33.0,
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
+            Flexible(
+              child: Container(
+                width: sceneWidget,
+                child:Text("Welcome\nThis is your Travel App",
+                  style: TextStyle(
+                    fontFamily: "Lato",
+                    fontSize: 33.0,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
+                textWidthBasis: TextWidthBasis.longestLine,
               ),
-              textWidthBasis: TextWidthBasis.longestLine,
+              )
             ),
             ButtonGreen(
             text: "Login with Gmail", 
