@@ -72,7 +72,11 @@ Widget showProfileData(AsyncSnapshot snapshot){
   }else{
     print("Logueado");
     print(snapshot.data);
-    user = User(name: snapshot.data.displayName, email: snapshot.data.email, photoURL: snapshot.data.photoUrl);
+    user = User(name: snapshot.data.displayName, 
+      email: snapshot.data.email, 
+      photoURL: snapshot.data.photoUrl, 
+      uid: null
+    );
     
     return Container(
       margin: EdgeInsets.only(

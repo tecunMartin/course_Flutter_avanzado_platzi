@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:platzi_tripss_app/Place/ui/widgets/card_image.dart';
+import 'package:platzi_tripss_app/Place/ui/widgets/title_input_location.dart';
 import 'package:platzi_tripss_app/widgets/gradient_back.dart';
 import 'package:platzi_tripss_app/widgets/text_input.dart';
 import 'dart:io';
@@ -22,7 +24,7 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
         children: <Widget>[
           GradientBack(height: 300,),
           _nameBack(context),
-          _inputs(),
+          _inputs(widget.image),
         ],
       ),
     );
@@ -63,8 +65,7 @@ Widget _nameBack(BuildContext context){
   );
 }
 
-Widget _inputs(){
-
+Widget _inputs(File image){
   final _controllerTitlePlace = TextEditingController();
   final _controllerDescriptionPlace = TextEditingController();
 
@@ -75,7 +76,15 @@ Widget _inputs(){
     ),
     child: ListView(
       children: <Widget>[
-        Container(),//Foto
+        Container(
+          alignment: Alignment.center,
+          child: CardImageWithFabIcon(pathImage: "assets/img/beach_palm.jpeg", 
+            width: 250, 
+            height: 250.0, 
+            iconData: Icons.camera_enhance,
+            onpressFabIcon: (){},
+          ),
+        ),//Foto
         Container( //TextField Title
           margin: EdgeInsets.only(bottom: 20.0),
           child: TextInput(
@@ -91,13 +100,16 @@ Widget _inputs(){
           controller: _controllerDescriptionPlace,
           maxLines: 6,
         ),
+        Container(
+          margin: EdgeInsets.only(top: 20.0),
+          child: TextInputLocation(hintText: "Add Location", 
+            controller: null, 
+            iconData: Icons.location_on,
+          ),
+        ),
       ],
     ),
   );
-
-
 }
-
-
 
 

@@ -1,22 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:platzi_tripss_app/widgets/floating_action_button_green.dart';
 
-class  CardImage extends StatelessWidget {
+class  CardImageWithFabIcon extends StatelessWidget {
 
-  String pathImage = "assets/img/beach.jpeg";
-  CardImage(this.pathImage);
+  final double height;
+  final double width;
+  double left = 20.0;
+  final String pathImage;
+  final VoidCallback onpressFabIcon;
+  final IconData iconData;
+
+  CardImageWithFabIcon({
+    Key key,
+    @required this.pathImage,
+    @required this.width,
+    @required this.height,
+    @required this.iconData,
+    @required this.onpressFabIcon,
+  });
 
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
 
     final card = Container(
-      height: 350.0,
-      width: 250.0,
+      height: height,
+      width: width,
       margin: EdgeInsets.only(
-        top: 80.0,
-        left: 20.0
-
+        left: left
       ),
 
       decoration: BoxDecoration(
@@ -41,7 +52,7 @@ class  CardImage extends StatelessWidget {
       alignment: Alignment(0.9,1.1),
       children: <Widget>[
         card,
-        FloatingActionButtonGreen()
+        FloatingActionButtonGreen(iconData: iconData, onPressed: onpressFabIcon,)
       ],
     );
   }
