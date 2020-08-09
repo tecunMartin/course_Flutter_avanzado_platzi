@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:generic_bloc_provider/generic_bloc_provider.dart';
+import 'package:platzi_tripss_app/Place/model/place.dart';
 import 'package:platzi_tripss_app/Place/ui/widgets/card_image.dart';
 import 'package:platzi_tripss_app/Place/ui/widgets/title_input_location.dart';
+import 'package:platzi_tripss_app/User/bloc/bloc_user.dart';
+import 'package:platzi_tripss_app/widgets/button_purple.dart';
 import 'package:platzi_tripss_app/widgets/gradient_back.dart';
 import 'package:platzi_tripss_app/widgets/text_input.dart';
 import 'dart:io';
@@ -24,12 +28,13 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
         children: <Widget>[
           GradientBack(height: 300,),
           _nameBack(context),
-          _inputs(widget.image),
+          _inputs(widget.image, context),
         ],
       ),
     );
   }
 }
+
 Widget _nameBack(BuildContext context){
   return Row(
     children: <Widget>[
@@ -65,9 +70,10 @@ Widget _nameBack(BuildContext context){
   );
 }
 
-Widget _inputs(File image){
+Widget _inputs(File image, BuildContext context){
   final _controllerTitlePlace = TextEditingController();
   final _controllerDescriptionPlace = TextEditingController();
+  UserBloc userBloc = BlocProvider.of<UserBloc>(context);
 
   return Container(
     margin: EdgeInsets.only(
@@ -78,13 +84,17 @@ Widget _inputs(File image){
       children: <Widget>[
         Container(
           alignment: Alignment.center,
+          margin: EdgeInsets.only(
+            bottom: 20.0,
+            right: 20.0
+          ),
           child: CardImageWithFabIcon(pathImage: "assets/img/beach_palm.jpeg", 
-            width: 250, 
+            width: 350.0, 
             height: 250.0, 
             iconData: Icons.camera_enhance,
             onpressFabIcon: (){},
           ),
-        ),//Foto
+        ),//Foto      
         Container( //TextField Title
           margin: EdgeInsets.only(bottom: 20.0),
           child: TextInput(
@@ -105,6 +115,26 @@ Widget _inputs(File image){
           child: TextInputLocation(hintText: "Add Location", 
             controller: null, 
             iconData: Icons.location_on,
+          ),
+        ),  
+        Container(
+          width: 70.0,
+          child: ButtonPurple(
+            buttonText: "Add Place",
+            onPressed: (){
+              //1. Firebase Storage
+              //Url -
+              //2. Cloud Firestore
+              //Place - title, descripcion, url, userOwner, likes
+              userBloc.updatePlaceData(Place(
+                name: _controllerTitlePlace.text,
+                description: _controllerDescriptionPlace.text,
+                likes: 0,
+              )).whenComplete(() => {
+                print("TERMINADO"),
+                Navigator.pop(context),
+              });
+            }
           ),
         ),
       ],

@@ -17,6 +17,7 @@ class  CardImageWithFabIcon extends StatelessWidget {
     @required this.height,
     @required this.iconData,
     @required this.onpressFabIcon,
+    this.left = 20.0,
   });
 
   @override
@@ -27,7 +28,7 @@ class  CardImageWithFabIcon extends StatelessWidget {
       height: height,
       width: width,
       margin: EdgeInsets.only(
-        left: left
+        left: 20.0
       ),
 
       decoration: BoxDecoration(

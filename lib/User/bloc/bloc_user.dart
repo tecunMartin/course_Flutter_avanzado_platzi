@@ -1,4 +1,5 @@
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
+import 'package:platzi_tripss_app/Place/model/place.dart';
 import 'package:platzi_tripss_app/User/Repository/auth_repository.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:platzi_tripss_app/User/Repository/cloud_firestore_repository.dart';
@@ -22,13 +23,13 @@ class UserBloc implements Bloc{
     2) SignOut a la aplicacion de google.
    */
 
-  Future<FirebaseUser> signIn(){
-    return _auth_repository.signInFirebase();
-  }
+  Future<FirebaseUser> signIn()=>_auth_repository.signInFirebase();
 
   //2. Registrar usuario en base de datos.
   final _cloudFirestoreRepository = CloudFirestoreRepository();
   void updateUserDatastore(User user)=> _cloudFirestoreRepository.updateUserDataFirestore(user);
+  Future<void> updatePlaceData(Place place)=> _cloudFirestoreRepository.updatePlaceData(place);
+
 
   //3. Cerrar sesion.
   signOut(){
