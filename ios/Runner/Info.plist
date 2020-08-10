@@ -41,5 +41,20 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+
+
+
+	<!-- Sección para permisos de grabación y permisos de toma de video -->
+	<key>NSCameraUsageDescription</key>
+    <string>Platzi Trips quiere tomar una foto. ¿Podemos usar tu cámara?</string>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>Platzi Trips quiere tomar una foto. ¿Podemos usar tu cámara?</string>
+    <key>NSMicrophoneUsageDescription</key>
+    <string>Platzi Trips quiere tomar una foto. ¿Podemos usar tu cámara?</string>
+	<!-- Termina la seccion para permisos de grabacion y permisos de tomar video -->
+
+	
+
+
 </dict>
 </plist>

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:platzi_tripss_app/Place/model/place.dart';
 import 'package:platzi_tripss_app/Place/ui/widgets/card_image.dart';
 import 'package:platzi_tripss_app/Place/ui/widgets/title_input_location.dart';
@@ -88,7 +89,8 @@ Widget _inputs(File image, BuildContext context){
             bottom: 20.0,
             right: 20.0
           ),
-          child: CardImageWithFabIcon(pathImage: "assets/img/beach_palm.jpeg", 
+          child: CardImageWithFabIcon(
+            pathImage: image.path, 
             width: 350.0, 
             height: 250.0, 
             iconData: Icons.camera_enhance,

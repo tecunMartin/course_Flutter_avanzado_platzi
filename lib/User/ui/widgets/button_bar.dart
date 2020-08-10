@@ -5,6 +5,7 @@ import 'package:generic_bloc_provider/generic_bloc_provider.dart';
 import 'package:platzi_tripss_app/Place/ui/Screens/add_place_screen.dart';
 import 'package:platzi_tripss_app/User/bloc/bloc_user.dart';
 import 'package:platzi_tripss_app/User/ui/widgets/circle_button.dart';
+import 'package:image_picker/image_picker.dart';
 
 class ButtonsBar extends StatelessWidget {
   UserBloc userBloc;
@@ -27,10 +28,16 @@ class ButtonsBar extends StatelessWidget {
             //Añadiremos un nuevo lugar.
             CircleButton(mini:true, icon: Icons.add,         iconSize: 40.0,color:Color.fromRGBO(255, 255, 255, 1),  
               onpressed:(){
-                File image;
-                Navigator.push(context, 
-                  MaterialPageRoute(builder:(context)=>AddPlaceScreen(image: image,)),
-                );
+                ImagePicker.pickImage(source: ImageSource.camera)
+                .catchError((onError)=>print(onError))
+                .then((File image){
+                  if(image != null){
+                    Navigator.push(context, 
+                      MaterialPageRoute(builder:(context)=>AddPlaceScreen(image: image,)),
+                    );
+                  }
+                });
+
               },),
             //Cerrar secion
             CircleButton(mini:true, icon: Icons.exit_to_app, iconSize:20.0, color:Color.fromRGBO(255, 255, 255, 0.6), 
@@ -41,5 +48,4 @@ class ButtonsBar extends StatelessWidget {
         )
     );
   }
-
 }
