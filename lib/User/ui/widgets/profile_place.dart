@@ -6,7 +6,7 @@ class ProfilePlace extends StatelessWidget {
 
   Place place;
 
-  ProfilePlace(this.place);
+  ProfilePlace({this.place});
 
   @override
   Widget build(BuildContext context) {

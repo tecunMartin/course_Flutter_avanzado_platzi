@@ -28,7 +28,7 @@ class ButtonsBar extends StatelessWidget {
             //Añadiremos un nuevo lugar.
             CircleButton(mini:true, icon: Icons.add,         iconSize: 40.0,color:Color.fromRGBO(255, 255, 255, 1),  
               onpressed:(){
-                ImagePicker.pickImage(source: ImageSource.camera)
+                ImagePicker.pickImage(source: ImageSource.camera,)
                 .catchError((onError)=>print(onError))
                 .then((File image){
                   if(image != null){

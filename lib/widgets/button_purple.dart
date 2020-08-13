@@ -8,7 +8,7 @@ class ButtonPurple extends StatelessWidget {
 
   ButtonPurple({
     Key key,
-    @required this.buttonText="Navegando",
+    @required this.buttonText,
     @required this.onPressed,
   });
 

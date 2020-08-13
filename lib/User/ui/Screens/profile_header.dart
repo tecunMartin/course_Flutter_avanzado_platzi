@@ -33,7 +33,6 @@ class ProfileHeader extends StatelessWidget {
           case ConnectionState.none:
             return CircularProgressIndicator();
           break;
-
         }
       },
       stream: userBloc.streamFirabase,

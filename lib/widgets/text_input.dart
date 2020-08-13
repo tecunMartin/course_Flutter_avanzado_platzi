@@ -28,6 +28,7 @@ class TextInput extends StatelessWidget {
         controller: controller,
         keyboardType: inputType,
         maxLines: maxLines,
+        textCapitalization: TextCapitalization.sentences,
         style: TextStyle(
           fontSize: 15.0,
           fontFamily: "Lato",
