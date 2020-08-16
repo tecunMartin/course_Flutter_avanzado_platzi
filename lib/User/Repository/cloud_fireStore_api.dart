@@ -56,6 +56,7 @@ class CloudFirestoreAPI{
         description: p.data["description"],
         name: p.data["name"] ,
         urlImage:p.data["urlImage"] ,
+        likes: p.data["likes"]
       )));
     });
     return profilePlaces;

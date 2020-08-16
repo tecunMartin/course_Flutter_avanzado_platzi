@@ -41,12 +41,18 @@ class UserBloc implements Bloc{
 
 /* Este tiene el control de los cambios que sucedan el la collection de PLACES */
   Stream<QuerySnapshot> placesListStream = Firestore.instance.collection(CloudFirestoreAPI().PLACES).snapshots();
-  Stream<QuerySnapshot> get placesStream =>placesListStream;
+  Stream<QuerySnapshot > get placesStream =>placesListStream;
 
 
   final _firebaseStorageRepository = FirabaseStorageRepository();
   Future<StorageUploadTask> uploadFile(String path, File image) => _firebaseStorageRepository.uploadFile(path, image);
 
+  /* Stream para control de places */
+  Stream<QuerySnapshot> myPlacesListStream(String uid){
+    return Firestore.instance.collection(CloudFirestoreAPI().PLACES)
+    .where("userOwner", isEqualTo: Firestore.instance.document("${CloudFirestoreAPI().USERS}/${uid}"))
+    .snapshots();
+  }
 
   //3. Cerrar sesion.
   signOut(){

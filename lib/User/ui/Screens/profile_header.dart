@@ -10,33 +10,13 @@ class ProfileHeader extends StatelessWidget {
   UserBloc userBloc;
   User user;
 
+  ProfileHeader({@required this.user});
+
   @override
   Widget build(BuildContext context){
-
+    return showProfileData();
     userBloc = BlocProvider.of<UserBloc>(context);
-
-    return StreamBuilder(
-      builder:(BuildContext context, AsyncSnapshot snapshot){
-        switch (snapshot.connectionState){
-          case ConnectionState.active:
-            return showProfileData(snapshot);
-          break;
-
-          case ConnectionState.done:
-            return showProfileData(snapshot);
-          break;  
-
-          case ConnectionState.waiting:
-            return CircularProgressIndicator();
-          break;
-
-          case ConnectionState.none:
-            return CircularProgressIndicator();
-          break;
-        }
-      },
-      stream: userBloc.streamFirabase,
-    );
+    
   }
 final title = Text(
   'Profile',
@@ -48,35 +28,7 @@ final title = Text(
   ),
 );
 
-Widget showProfileData(AsyncSnapshot snapshot){
-  if(!snapshot.hasData || snapshot.hasError){
-  print("No logeado");
-    return Container(
-      margin: EdgeInsets.only(
-        left: 20.0,
-        right: 20.0,
-        top: 50.0
-      ),
-      child: Column(
-        children: <Widget>[
-          Row(
-            children: <Widget>[
-              CircularProgressIndicator(),
-              Text("No se pudo cargar la información. Haz login"),
-            ],
-          ),
-        ],
-      ),
-    );
-  }else{
-    print("Logueado");
-    print(snapshot.data);
-    user = User(name: snapshot.data.displayName, 
-      email: snapshot.data.email, 
-      photoURL: snapshot.data.photoUrl, 
-      uid: null
-    );
-    
+Widget showProfileData(){
     return Container(
       margin: EdgeInsets.only(
         left: 20.0,
@@ -96,7 +48,4 @@ Widget showProfileData(AsyncSnapshot snapshot){
       ),
     );
   }
-}
-
-
 }

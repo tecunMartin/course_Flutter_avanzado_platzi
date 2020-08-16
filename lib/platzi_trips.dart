@@ -32,7 +32,6 @@ class _PlatziTrips extends State<PlatziTrips> {
   Widget build(BuildContext context) {
     // TODO: implement build
 
-
     return
 
       Scaffold(
